@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>House It Going?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 200vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+        }
+
+        #image_container {
+            text-align: center;
+            position: relative;
+            width: 100%;
+        }
+
+        .image-wrapper {
+            display: inline-block;
+            transform: scale(0.75); /* Reduz a imagem para 75% do tamanho (25% menor) */
+            transform-origin: center center;
+        }
+
+        .image-wrapper img {
+            display: block; /* Remove espaços extras abaixo da imagem */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="image_container">
+        <div class="image-wrapper">
+            <img src="LESMASIMAGEM.jpg" usemap="#image-map" alt="Imagem Interativa">
+        </div>
+
+        <!-- Mapa de imagem ORIGINAL (sem alterar coordenadas) -->
+        <map name="image-map">
+            <area target="" alt="Quem somos?" title="Quem somos?" href="" coords="182,210,226,92,339,76,410,134,399,233,394,303,427,356,435,396,414,501,408,561,288,553,192,559,145,486" shape="poly">
+            <area target="" alt="Missão, Visão e Valores" title="Missão, Visão e Valores" href="" coords="77,725,135,666,219,605,279,598,350,690,439,758,489,810,430,873,391,942,316,968,238,924,115,831,51,759" shape="poly">
+            <area target="" alt="Atividades" title="Atividades" href="" coords="406,630,363,667,394,696,489,712,577,719,594,703,549,628,540,504,537,446,559,352,633,364,641,311,645,198,606,122,541,124,491,131,461,176,436,228,421,267,412,292,487,330,462,550" shape="poly">
+            <area target="" alt="Arquivo" title="Arquivo" href="" coords="732,653,699,718,632,756,605,836,662,887,781,907,847,840,834,702,927,691,962,627,969,578,967,526,895,502,855,517,818,554,787,574,767,589,742,616" shape="poly">
+            <area target="" alt="Diário de Perguntas e Respostas" title="Diário de Perguntas e Respostas" href="" coords="611,400,678,366,714,441,764,498,767,537,771,566,748,581,720,587,699,612,671,620,648,598,615,566,590,545,581,495,565,460,560,433" shape="poly">
+            <area target="" alt="Redes Sociais" title="Redes Sociais" href="" coords="728,157,667,206,684,266,709,358,763,415,823,416,934,364,964,302,975,242,919,176,891,119,838,90" shape="poly">
+        </map>
+    </div>
+
+    <!-- Script para garantir que o mapa de imagem funcione corretamente -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('img[usemap]').rwdImageMaps();
+            
+            // Ajuste adicional para garantir que as áreas clicáveis correspondam à imagem redimensionada
+            $('area').on('click', function(e) {
+                e.preventDefault();
+                alert('Você clicou em: ' + $(this).attr('title'));
+            });
+        });
+    </script>
+</body>
+</html>
