@@ -1,67 +1,246 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>House It Going?</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 200vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-        }
+  <meta charset="UTF-8">
+  <title>House It Going?</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f0f4f1;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow-x: hidden;
+    }
 
-        #image_container {
-            text-align: center;
-            position: relative;
-            width: 100%;
-        }
+    #main-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 30px 0;
+    }
 
-        .image-wrapper {
-            display: inline-block;
-            transform: scale(0.75); /* Reduz a imagem para 75% do tamanho (25% menor) */
-            transform-origin: center center;
-        }
+    .scrollable-image {
+      position: relative;
+    }
 
-        .image-wrapper img {
-            display: block; /* Remove espaços extras abaixo da imagem */
-        }
-    </style>
+    .scrollable-image img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .video-overlay {
+      position: absolute;
+      z-index: 10;
+      display: none;
+      background-color: #000; /* Fundo preto sólido */
+      border-radius: 10px;
+      box-sizing: border-box;
+      overflow: hidden; /* Garante que o vídeo não ultrapasse as bordas */
+    }
+
+    .video-overlay video {
+      width: 100%;
+      height: 100%;
+      border: 3px solid rgba(36, 243, 0, 0.388);
+      border-radius: 8px;
+      display: block; /* Remove espaços extras abaixo do vídeo */
+    }
+
+    #video1-overlay {
+      width: 519.4px; /* 490 + 6% */
+      height: 420.82px; /* 397 + 6% */
+      left: 915.8px; /* Ajustado para compensar o aumento de 6% */
+      top: 1406.56px; /* Ajustado para compensar o aumento de 6% */
+    }
+
+    #video2-overlay {
+      width: 1009.78px; /* (1238-285) + 6% */
+      height: 694.1px; /* (3243-2588) + 6% */
+      left: 267.9px; /* 285 - (6% da largura) */
+      top: 2545.72px; /* Posição ajustada 2cm mais alta */
+    }
+
+    footer.footer-verde {
+      background-color: #0d5b0f;
+      color: white;
+      padding: 40px 0;
+      width: 100%;
+    }
+
+    .container {
+      width: 85%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img {
+      width: 120px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-redes {
+      flex: 1;
+      min-width: 300px;
+      margin: 10px;
+      text-align: right;
+    }
+
+    .footer-redes h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .footer-redes a {
+      margin-left: 10px;
+    }
+
+    .footer-redes img {
+      width: 36px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .footer-redes img:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 768px) {
+      .footer-logo,
+      .footer-redes {
+        text-align: center;
+      }
+
+      .footer-redes a {
+        margin: 0 8px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="image_container">
-        <div class="image-wrapper">
-            <img src="LESMASIMAGEM.jpg" usemap="#image-map" alt="Imagem Interativa">
-        </div>
-
-        <!-- Mapa de imagem ORIGINAL (sem alterar coordenadas) -->
-        <map name="image-map">
-            <area target="" alt="Quem somos?" title="Quem somos?" href="" coords="182,210,226,92,339,76,410,134,399,233,394,303,427,356,435,396,414,501,408,561,288,553,192,559,145,486" shape="poly">
-            <area target="" alt="Missão, Visão e Valores" title="Missão, Visão e Valores" href="" coords="77,725,135,666,219,605,279,598,350,690,439,758,489,810,430,873,391,942,316,968,238,924,115,831,51,759" shape="poly">
-            <area target="" alt="Atividades" title="Atividades" href="" coords="406,630,363,667,394,696,489,712,577,719,594,703,549,628,540,504,537,446,559,352,633,364,641,311,645,198,606,122,541,124,491,131,461,176,436,228,421,267,412,292,487,330,462,550" shape="poly">
-            <area target="" alt="Arquivo" title="Arquivo" href="" coords="732,653,699,718,632,756,605,836,662,887,781,907,847,840,834,702,927,691,962,627,969,578,967,526,895,502,855,517,818,554,787,574,767,589,742,616" shape="poly">
-            <area target="" alt="Diário de Perguntas e Respostas" title="Diário de Perguntas e Respostas" href="" coords="611,400,678,366,714,441,764,498,767,537,771,566,748,581,720,587,699,612,671,620,648,598,615,566,590,545,581,495,565,460,560,433" shape="poly">
-            <area target="" alt="Redes Sociais" title="Redes Sociais" href="" coords="728,157,667,206,684,266,709,358,763,415,823,416,934,364,964,302,975,242,919,176,891,119,838,90" shape="poly">
-        </map>
+  <!-- Seção da imagem ajustada -->
+  <div class="scrollable-image">
+    <img src="Prancheta 1.png" usemap="#image-map" id="main-image">
+    
+    <!-- Overlay do primeiro vídeo -->
+    <div id="video1-overlay" class="video-overlay">
+      <video id="lesmas-video1" controls muted autoplay>
+        <source src="LesmasAA25.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
     </div>
+    
+    <!-- Overlay do segundo vídeo -->
+    <div id="video2-overlay" class="video-overlay">
+      <video id="lesmas-video2" controls muted autoplay>
+        <source src="lesmas (1).mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+      </video>
+    </div>
+  </div>
 
-    <!-- Script para garantir que o mapa de imagem funcione corretamente -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.rwdImageMaps/1.6/jquery.rwdImageMaps.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('img[usemap]').rwdImageMaps();
-            
-            // Ajuste adicional para garantir que as áreas clicáveis correspondam à imagem redimensionada
-            $('area').on('click', function(e) {
-                e.preventDefault();
-                alert('Você clicou em: ' + $(this).attr('title'));
-            });
-        });
-    </script>
+  <map name="image-map">
+    <area target="" alt="Quem somos?" title="Quem somos?" href="Quemsomos.html" coords="518,373,495,453,490,553,463,633,451,704,536,762,585,754,653,749,684,725,691,618,682,574,654,521,671,457,681,394,643,367,585,357,561,356,543,360" shape="poly">
+    <area target="" alt="Contactos" title="Contactos" href="Conatctos.html" coords="1033,732,1008,774,952,801,878,886,838,983,916,1038,978,1029,1037,913,1099,870,1129,781,1124,721" shape="poly">
+    <area target="" alt="Atividades" title="Atividades" href="Atividades.html" coords="504,812,475,850,416,883,389,908,414,966,487,1022,563,1063,637,1105,655,1057,686,994,726,979,714,932,560,810" shape="poly">
+    <area target="" alt="Podcast" title="Podcast" href="Podcast.html" coords="957,403,904,455,880,479,920,579,949,638,1001,652,1108,594,1140,550,1128,480,1053,405,1017,374,980,385,965,390" shape="poly">
+    <area target="" alt="Diário de Perguntas e Respostas" title="Diário de Perguntas e Respostas" href="Diário de Perguntas e Respostas.html" coords="723,411,677,532,694,560,740,567,716,787,639,851,682,876,767,891,818,888,760,795,782,577,851,586,846,422,792,395" shape="poly">
+    <area target="" alt="Arquivo" title="Arquivo" href="Arquivo.html" coords="862,609,793,660,810,725,825,783,890,814,939,794,1000,752,940,671,900,620" shape="poly">
+    <area target="" alt="Vídeo Lesmas 1" title="Vídeo Lesmas 1" href="javascript:void(0)" coords="932,1424,1422,1821" shape="rect" onclick="showVideo('video1-overlay')">
+    <area target="" alt="Vídeo Lesmas 2" title="Vídeo Lesmas 2" href="javascript:void(0)" coords="285,2588,1238,3243" shape="rect" onclick="showVideo('video2-overlay')">
+  </map>
+
+  <footer class="footer-verde">
+    <div class="container">
+      <div class="footer-logo">
+        <a href="https://www.antonioarroio.edu.pt" target="_blank">
+          <img src="PrincipalPreto.png" alt="Escola Artística António Arroio">
+        </a>
+      </div>
+      <div class="footer-redes">
+        <h3>Segue-nos!</h3>
+        <a href="https://www.tiktok.com/@lesmas_aa" target="_blank"><img src="2logotipotiktok.png" alt="Tiktok"></a>
+        <a href="https://www.instagram.com/lesmas_aa/" target="_blank"><img src="logotipoinstagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mainImage = document.getElementById('main-image');
+    const videos = {
+      'video1-overlay': document.getElementById('lesmas-video1'),
+      'video2-overlay': document.getElementById('lesmas-video2')
+    };
+
+    // Função para mostrar o vídeo
+    function showVideo(videoId) {
+      const overlay = document.getElementById(videoId);
+      overlay.style.display = 'block';
+      videos[videoId].play();
+    }
+
+    // Ajusta a posição dos overlays quando a imagem é redimensionada
+    function adjustVideoPositions() {
+      const scale = mainImage.clientWidth / mainImage.naturalWidth;
+      document.querySelectorAll('.video-overlay').forEach(overlay => {
+        overlay.style.transform = `scale(${scale})`;
+        overlay.style.transformOrigin = 'top left';
+      });
+    }
+
+    // Verifica se o usuário rolou até a posição dos vídeos
+    function checkScroll() {
+      const rect = mainImage.getBoundingClientRect();
+      const scaleY = mainImage.clientHeight / mainImage.naturalHeight;
+      
+      // Posições dos vídeos ajustadas pela escala
+      const video1Top = 1406.56 * scaleY;
+      const video2Top = 2545.72 * scaleY;
+      
+      // Verifica se cada vídeo está visível na tela
+      if (rect.top + video1Top < window.innerHeight && rect.top + video1Top > 0) {
+        showVideo('video1-overlay');
+      }
+      
+      if (rect.top + video2Top < window.innerHeight && rect.top + video2Top > 0) {
+        showVideo('video2-overlay');
+      }
+    }
+
+    // Event listeners
+    window.addEventListener('resize', function() {
+      adjustVideoPositions();
+    });
+
+    window.addEventListener('scroll', function() {
+      checkScroll();
+    });
+
+    // Inicialização quando a imagem carrega
+    mainImage.onload = function() {
+      adjustVideoPositions();
+      // Adiciona um pequeno delay para garantir que tudo esteja carregado
+      setTimeout(() => {
+        checkScroll();
+        // Mostra ambos os vídeos permanentemente
+        showVideo('video1-overlay');
+        showVideo('video2-overlay');
+      }, 500);
+    };
+
+    // Se a imagem já estiver carregada quando o script executar
+    if (mainImage.complete) {
+      mainImage.onload();
+    }
+  </script>
 </body>
 </html>

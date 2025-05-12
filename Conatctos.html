@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f6e1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .contact-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 40px 20px;
+            text-align: center;
+            margin: auto;
+        }
+        
+        .contact-title {
+            font-weight: bold;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .social-text {
+            color: #81a88b;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+        
+        .question {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .contact-form {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #81a88b;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        textarea.form-input {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #81a88b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #6d9277;
+        }
+    </style>
+</head>
+<body>
+    <div class="contact-container">
+        <h1 class="contact-title">Contactos</h1>
+        <p class="social-text">Acompanha as nossas redes sociais!</p>
+        
+        <div class="social-icons">
+            <a href="https://www.instagram.com/lesmas_aa/" target="_blank">
+                <img src="logotipoinstagram.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.tiktok.com/@lesmas_aa" target="_blank">
+                <img src="2logotipotiktok.png" alt="TikTok" class="social-icon">
+            </a>
+        </div>
+        
+        <h2 class="question">Tens alguma sugestão ou dúvida?</h2>
+        
+        <form class="contact-form" action="mailto:lesmas.aa@gmail.com" method="post" enctype="text/plain">
+            <input type="text" class="form-input" name="name" placeholder="O teu nome" required>
+            <input type="email" class="form-input" name="email" placeholder="O teu email" required>
+            <textarea class="form-input" name="message" placeholder="A tua mensagem..." required></textarea>
+            <button type="submit" class="submit-btn">Enviar Mensagem</button>
+        </form>
+    </div>
+</body>
+</html>
